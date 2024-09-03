@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="card">
+        <div class="card-body">
+
+              <h5 class="card-title">Editar item de Palntilla</h5>
+
+          <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            {{ formulario|crispy }}
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <a href="{% url 'ListaPlantilla' %}" type="reset" class="btn btn-secondary">Cancelar</a>
+                  &nbsp;
+                <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-primary">Guardar</a>                
+              </div>
+              <div class="col-md-6  text-right">
+                <button type="submit" id="btnBorrar" name="btnBorrar" class="btn btn-danger">Borrar</a>                
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>    
+{% endblock %} 

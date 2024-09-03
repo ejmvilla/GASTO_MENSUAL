@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block CSS %}    
+    <style>
+        .calendar {
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .calendar-months {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .calendar-months button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .calendar-months button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}  
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="calendar">
+            <div class="calendar-header">
+                <button id="prevYear" class="btn btn-outline-primary">&lt;</button>
+                <h4 id="year">2024</h4>
+                <button id="nextYear" class="btn btn-outline-primary">&gt;</button>
+            </div>
+            <div class="calendar-months">
+                <button data-month="01">Enero</button>
+                <button data-month="02">Febrero</button>
+                <button data-month="03">Marzo</button>
+                <button data-month="04">Abril</button>
+                <button data-month="05">Mayo</button>
+                <button data-month="06">Junio</button>
+                <button data-month="07">Julio</button>
+                <button data-month="08">Agosto</button>
+                <button data-month="09">Septiembre</button>
+                <button data-month="10">Octubre</button>
+                <button data-month="11">Noviembre</button>
+                <button data-month="12">Diciembre</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let currentYear = 2024;
+
+        document.getElementById('year').innerText = currentYear;
+
+        document.getElementById('prevYear').addEventListener('click', function() {
+            currentYear--;
+            document.getElementById('year').innerText = currentYear;
+        });
+
+        document.getElementById('nextYear').addEventListener('click', function() {
+            currentYear++;
+            document.getElementById('year').innerText = currentYear;
+        });
+
+        document.querySelectorAll('.calendar-months button').forEach(button => {
+            button.addEventListener('click', function() {
+                const month = this.getAttribute('data-month');
+                const year = currentYear;
+                const url = `/pagos/${year}/${month}/`;
+                window.location.href = url;
+            });
+        });
+    </script>
+{% endblock %} 

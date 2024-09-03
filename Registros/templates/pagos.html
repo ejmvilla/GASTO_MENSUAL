@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block CSS %}
+
+{% endblock %}
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    {% load funciones %}
+    <div class="card CardOscuro">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="card-title">Pagos {{pagosde}}</h3>
+              Plantilla
+            </div>
+            <div class="col-md-6 text-right">
+              <h5>Total: ${{total}}</h5>
+              <h4>Falta pagar: <span class="div_estado3">${{falta}}</span> </h4>
+            </div>
+          </div>          
+          <table class="table table-dark table-striped">
+            <thead>
+              <th>Descrip./Precio</th>
+              <th>Vence</th>
+              <th></th>
+            </thead>
+            <tbody>
+              {% for item in registros %}
+                {% with clase_td=item.pagado|yesno:"class=pagado," %}
+                <tr>
+                    <td {{clase_td}}>
+                      <div>
+                        <h6>{{item.descripcion}}</h6>
+                      </div>
+                      <div>
+                        <span  class="div_estado{{item.estado}}">${{item.monto}}</span>
+                      </div>
+                    </td>
+                    <td {{clase_td}}>{{item.fecha.day}}/{{item.fecha.month}}</td>
+                    <td {{clase_td}}>
+                      <a href="{% url 'editRegistro' id=item.id %}" ><i class="bi bi-pencil"></i></a>
+                    </td>
+                </tr>
+                {% endwith %}
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <a type="button" href="{% url 'addRegistro' anio mes %}" value="+" class="btn btn-success">Agregar</a>
+            </div>
+            {% if registros|length == 0 %}
+              <br><br>
+              <div class="col-md-6 text-right">
+                <a type="button" href="{% url 'CopiarRegistros' anio mes %}" value="+" class="btn btn-primary">Copiar  registro del último mes</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>    
+{% endblock %} 

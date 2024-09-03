@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gastos Mensuales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .bg-degrade {
+            background: linear-gradient(to bottom, #001f3f, #000000);
+            height: 100vh;
+            margin: 0;
+            color: aliceblue;
+        }
+
+        .divPrincipal {
+            padding-top: 60px;
+            padding-right: 10px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .CardOscuro {
+            background-color: #1a232c !important;
+            color: aliceblue;
+        }
+
+        .noactivo {
+            background-color: rgb(255, 223, 213) !important;
+            color: red !important;
+        }
+        .pagado {
+            background-color: rgb(195, 255, 193) !important;
+            color: rgb(0, 187, 16) !important;
+        }
+
+
+        .div_estado0 {
+            border: 1px solid rgb(180, 180, 180);
+            color: rgb(180,180,180);
+            border-radius: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .div_estado1 {
+            border: 1px solid rgb(255, 255, 0);
+            color: rgb(255, 255, 0);
+            /*background-color: #fafc98;*/
+            border-radius: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .div_estado2 {
+            border: 1px solid rgb(0 , 187, 16);
+            color: rgb(0, 187, 16);
+            /*background-color: #d4f4dd;*/
+            border-radius: 3px;
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+        .div_estado3 {
+            border: 1px solid rgb(255, 31, 24);
+            color: rgb(255, 31, 24);
+            /*background-color: #fcbcb9;*/
+            border-radius: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        .falta_pagar{
+          color: red;
+          font-size:large;
+        }
+
+    </style>
+    {% block CSS %}
+
+    {% endblock %}
+
+  </head>
+  <body class="bg-degrade">
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Gastos Mensuales</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"> </h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'PagosPrincipal' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'calendario' %}">Calendario</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'ListaPlantilla' %}">Plantillas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'generarMes' %}">Generar Nuevo mes</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Plantillas
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <hr>
+                </li>
+                <li>
+                  <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+                </form>
+                
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <div class="divPrincipal">
+    {% block content %}
+
+    {% endblock %} 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    {% block javascript %}
+
+    {% endblock %} 
+
+  </body>
+</html>

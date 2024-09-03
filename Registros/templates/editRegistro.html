@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load crispy_forms_tags %}
+    <div class="card">
+        <div class="card-body">
+
+              <h5 class="card-title">Editar item de Palntilla</h5>
+
+          <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            {{ formulario|crispy }}
+            <br>
+              <div class="row">
+                <div class="col-md-6">
+                  {% if pagado %}
+                    <button type="submit" id="btnPagar" name="btnPagar" class="btn btn-danger">CANCELAR PAGO</a>                
+                  {% else %}  
+                    <button type="submit" id="btnPagar" name="btnPagar" class="btn btn-success">PAGAR</a>                
+                  {% endif %}  
+                  </div>
+              <div>
+                <BR>
+              <div>
+              <div class="row">
+              <div class="col-md-6">
+                <a href="#"  onclick="window.history.back(); return false;" type="reset" class="btn btn-secondary">Volver</a>&nbsp;&nbsp;
+                <button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-primary">GUARDAR</a>                
+                </div>
+              <div class="col-md-6  text-right">
+                <button type="submit" id="btnBorrar" name="btnBorrar" class="btn btn-danger">Borrar</a>                
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>    
+{% endblock %} 
