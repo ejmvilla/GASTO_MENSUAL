@@ -1,0 +1,68 @@
+.bg-degrade {
+    background: linear-gradient(to bottom, #001f3f, #000000);
+    height: 100vh;
+    margin: 0;
+    color: aliceblue;
+}
+
+.divPrincipal {
+    padding-top: 60px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.CardOscuro {
+    background-color: #1a232c !important;
+    color: aliceblue;
+}
+
+.noactivo {
+    background-color: rgb(255, 223, 213) !important;
+    color: red !important;
+}
+.pagado {
+    background-color: rgb(195, 255, 193) !important;
+    color: rgb(0, 187, 16) !important;
+}
+
+
+.div_estado0 {
+    border: 1px solid rgb(180, 180, 180);
+    color: rgb(180,180,180);
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.div_estado1 {
+    border: 1px solid rgb(255, 255, 0);
+    color: rgb(255, 255, 0);
+    /*background-color: #fafc98;*/
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.div_estado2 {
+    border: 1px solid rgb(0 , 187, 16);
+    color: rgb(0, 187, 16);
+    /*background-color: #d4f4dd;*/
+    border-radius: 3px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.div_estado3 {
+    border: 1px solid rgb(255, 31, 24);
+    color: rgb(255, 31, 24);
+    /*background-color: #fcbcb9;*/
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.falta_pagar{
+  color: red;
+  font-size:large;
+}
+
