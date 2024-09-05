@@ -8,6 +8,8 @@ from datetime import datetime, date
 from django.utils.timezone import now
 from django.contrib.auth.decorators import login_required
 
+from django.conf import settings
+
 @login_required
 def ListaPlantilla(request):
     Lista=Renglon.objects.filter().order_by('dia')
@@ -234,7 +236,7 @@ def PagosPrincipal(request):
 
 @login_required
 def Pagos(request,anio,mes): 
-
+    estaticos= str(settings.STATIC_ROOT)
     print("RECIBE: ",anio,"-", mes)
     plantillas = Plantilla.objects.all()
     registros = Registro.objects.filter(fecha__month=mes, fecha__year=anio).order_by('pagado','fecha')
@@ -270,5 +272,6 @@ def Pagos(request,anio,mes):
         'pagosde':pagosde,
         'anio':anio,
         'mes':mes,
+        'estaticos':estaticos,
     }
     return render(request,'pagos.html',data) 
