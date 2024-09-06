@@ -16,8 +16,8 @@
             "dest": "/static/$1"
         },
         {
-        "src": "/(.*)",
-        "dest": "GASTOS/wsgi.py"
+            "src": "(.*)",
+            "dest": "GASTOS/wsgi.py"
         }
     ]
 }
