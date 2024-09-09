@@ -5,15 +5,15 @@
             "use": "@vercel/python",
             "config":{
                 "maxLambaSize": "15mb",
-                "runtime": "python3.11"
+                "runtime": "python3.11.4"
             }            
         }
 
     ],
     "routes":[
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
+            "src": "static/(.*)",
+            "dest": "static/$1"
         },
         {
             "src": "(.*)",
